@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://craftjack.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://craftjack.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://craftjack.com/">
+      <s:element name="GetLeadIdFromHash">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="hash" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLeadIdFromHashResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetLeadIdFromHashResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLeadDetailFromHash">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="hash" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLeadDetailFromHashResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLeadDetailFromHashResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMatches">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="hash" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="contractorId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMatchesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMatchesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddReview">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="contractorId" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="hash" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="hired" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="comments" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="rating" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="responsiveness" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="quality" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeliness" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="flexibility" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="professionalism" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="price" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="reliability" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="manners" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="speed" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="honesty" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddReviewResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddReviewResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="long" type="s:long" />
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetLeadIdFromHashSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLeadIdFromHash" />
+  </wsdl:message>
+  <wsdl:message name="GetLeadIdFromHashSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLeadIdFromHashResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLeadDetailFromHashSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLeadDetailFromHash" />
+  </wsdl:message>
+  <wsdl:message name="GetLeadDetailFromHashSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLeadDetailFromHashResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMatchesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMatches" />
+  </wsdl:message>
+  <wsdl:message name="GetMatchesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMatchesResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddReviewSoapIn">
+    <wsdl:part name="parameters" element="tns:AddReview" />
+  </wsdl:message>
+  <wsdl:message name="AddReviewSoapOut">
+    <wsdl:part name="parameters" element="tns:AddReviewResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLeadIdFromHashHttpGetIn">
+    <wsdl:part name="hash" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLeadIdFromHashHttpGetOut">
+    <wsdl:part name="Body" element="tns:long" />
+  </wsdl:message>
+  <wsdl:message name="GetLeadDetailFromHashHttpGetIn">
+    <wsdl:part name="hash" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLeadDetailFromHashHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="GetMatchesHttpGetIn">
+    <wsdl:part name="hash" type="s:string" />
+    <wsdl:part name="contractorId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMatchesHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="AddReviewHttpGetIn">
+    <wsdl:part name="contractorId" type="s:string" />
+    <wsdl:part name="hash" type="s:string" />
+    <wsdl:part name="hired" type="s:string" />
+    <wsdl:part name="comments" type="s:string" />
+    <wsdl:part name="rating" type="s:string" />
+    <wsdl:part name="responsiveness" type="s:string" />
+    <wsdl:part name="quality" type="s:string" />
+    <wsdl:part name="timeliness" type="s:string" />
+    <wsdl:part name="flexibility" type="s:string" />
+    <wsdl:part name="professionalism" type="s:string" />
+    <wsdl:part name="price" type="s:string" />
+    <wsdl:part name="reliability" type="s:string" />
+    <wsdl:part name="manners" type="s:string" />
+    <wsdl:part name="speed" type="s:string" />
+    <wsdl:part name="honesty" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddReviewHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLeadIdFromHashHttpPostIn">
+    <wsdl:part name="hash" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLeadIdFromHashHttpPostOut">
+    <wsdl:part name="Body" element="tns:long" />
+  </wsdl:message>
+  <wsdl:message name="GetLeadDetailFromHashHttpPostIn">
+    <wsdl:part name="hash" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLeadDetailFromHashHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="GetMatchesHttpPostIn">
+    <wsdl:part name="hash" type="s:string" />
+    <wsdl:part name="contractorId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMatchesHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="AddReviewHttpPostIn">
+    <wsdl:part name="contractorId" type="s:string" />
+    <wsdl:part name="hash" type="s:string" />
+    <wsdl:part name="hired" type="s:string" />
+    <wsdl:part name="comments" type="s:string" />
+    <wsdl:part name="rating" type="s:string" />
+    <wsdl:part name="responsiveness" type="s:string" />
+    <wsdl:part name="quality" type="s:string" />
+    <wsdl:part name="timeliness" type="s:string" />
+    <wsdl:part name="flexibility" type="s:string" />
+    <wsdl:part name="professionalism" type="s:string" />
+    <wsdl:part name="price" type="s:string" />
+    <wsdl:part name="reliability" type="s:string" />
+    <wsdl:part name="manners" type="s:string" />
+    <wsdl:part name="speed" type="s:string" />
+    <wsdl:part name="honesty" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddReviewHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="matchesSoap">
+    <wsdl:operation name="GetLeadIdFromHash">
+      <wsdl:input message="tns:GetLeadIdFromHashSoapIn" />
+      <wsdl:output message="tns:GetLeadIdFromHashSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLeadDetailFromHash">
+      <wsdl:input message="tns:GetLeadDetailFromHashSoapIn" />
+      <wsdl:output message="tns:GetLeadDetailFromHashSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMatches">
+      <wsdl:input message="tns:GetMatchesSoapIn" />
+      <wsdl:output message="tns:GetMatchesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddReview">
+      <wsdl:input message="tns:AddReviewSoapIn" />
+      <wsdl:output message="tns:AddReviewSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="matchesHttpGet">
+    <wsdl:operation name="GetLeadIdFromHash">
+      <wsdl:input message="tns:GetLeadIdFromHashHttpGetIn" />
+      <wsdl:output message="tns:GetLeadIdFromHashHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLeadDetailFromHash">
+      <wsdl:input message="tns:GetLeadDetailFromHashHttpGetIn" />
+      <wsdl:output message="tns:GetLeadDetailFromHashHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMatches">
+      <wsdl:input message="tns:GetMatchesHttpGetIn" />
+      <wsdl:output message="tns:GetMatchesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddReview">
+      <wsdl:input message="tns:AddReviewHttpGetIn" />
+      <wsdl:output message="tns:AddReviewHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="matchesHttpPost">
+    <wsdl:operation name="GetLeadIdFromHash">
+      <wsdl:input message="tns:GetLeadIdFromHashHttpPostIn" />
+      <wsdl:output message="tns:GetLeadIdFromHashHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLeadDetailFromHash">
+      <wsdl:input message="tns:GetLeadDetailFromHashHttpPostIn" />
+      <wsdl:output message="tns:GetLeadDetailFromHashHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMatches">
+      <wsdl:input message="tns:GetMatchesHttpPostIn" />
+      <wsdl:output message="tns:GetMatchesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddReview">
+      <wsdl:input message="tns:AddReviewHttpPostIn" />
+      <wsdl:output message="tns:AddReviewHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="matchesSoap" type="tns:matchesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLeadIdFromHash">
+      <soap:operation soapAction="http://craftjack.com/GetLeadIdFromHash" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeadDetailFromHash">
+      <soap:operation soapAction="http://craftjack.com/GetLeadDetailFromHash" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatches">
+      <soap:operation soapAction="http://craftjack.com/GetMatches" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddReview">
+      <soap:operation soapAction="http://craftjack.com/AddReview" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="matchesSoap12" type="tns:matchesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLeadIdFromHash">
+      <soap12:operation soapAction="http://craftjack.com/GetLeadIdFromHash" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeadDetailFromHash">
+      <soap12:operation soapAction="http://craftjack.com/GetLeadDetailFromHash" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatches">
+      <soap12:operation soapAction="http://craftjack.com/GetMatches" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddReview">
+      <soap12:operation soapAction="http://craftjack.com/AddReview" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="matchesHttpGet" type="tns:matchesHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetLeadIdFromHash">
+      <http:operation location="/GetLeadIdFromHash" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeadDetailFromHash">
+      <http:operation location="/GetLeadDetailFromHash" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatches">
+      <http:operation location="/GetMatches" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddReview">
+      <http:operation location="/AddReview" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="matchesHttpPost" type="tns:matchesHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetLeadIdFromHash">
+      <http:operation location="/GetLeadIdFromHash" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeadDetailFromHash">
+      <http:operation location="/GetLeadDetailFromHash" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatches">
+      <http:operation location="/GetMatches" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddReview">
+      <http:operation location="/AddReview" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="matches">
+    <wsdl:port name="matchesSoap" binding="tns:matchesSoap">
+      <soap:address location="https://app.craftjack.com/leadmanager/api/matches.asmx" />
+    </wsdl:port>
+    <wsdl:port name="matchesSoap12" binding="tns:matchesSoap12">
+      <soap12:address location="https://app.craftjack.com/leadmanager/api/matches.asmx" />
+    </wsdl:port>
+    <wsdl:port name="matchesHttpGet" binding="tns:matchesHttpGet">
+      <http:address location="https://app.craftjack.com/leadmanager/api/matches.asmx" />
+    </wsdl:port>
+    <wsdl:port name="matchesHttpPost" binding="tns:matchesHttpPost">
+      <http:address location="https://app.craftjack.com/leadmanager/api/matches.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
